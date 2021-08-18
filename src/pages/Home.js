@@ -13,8 +13,7 @@ function HomeScreen({ navigation }) {
             />
             <Pressable style={styles.button}
                 onPress={() => navigation.navigate('Login')}
-            >
-
+            >Press
             </Pressable >
         </View >
     );
