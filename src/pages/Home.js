@@ -1,11 +1,13 @@
 import React from 'react';
 import { Pressable, Text, View, StyleSheet, Image, Button } from 'react-native';
+import { StatusBar } from "expo-status-bar";
 
 
 function HomeScreen({ navigation }) {
     const texto = 'aiai'
     return (
         <View style={styles.container}>
+            <StatusBar style="auto" />
             <Text style={styles.text}>FoodBox</Text>
             <Image
                 style={styles.image}
@@ -13,7 +15,7 @@ function HomeScreen({ navigation }) {
             />
             <Pressable style={styles.button}
                 onPress={() => navigation.navigate('Login')}
-            >Press
+            >
             </Pressable >
         </View >
     );
@@ -28,26 +30,29 @@ const styles = StyleSheet.create({
 
     },
     text: {
-        fontSize: 40,
+        fontSize: 45,
+        color: '#0862A0',
+        fontFamily: 'Avenir Next',
+        fontWeight: 'normal',
         position: 'absolute',
-        top: '41%',
+        top: '43%',
         bottom: 0,
-        left: '40%',
+        left: '35%',
         right: 0,
     },
     image: {
 
-        width: '20%',
-        height: '20%',
+        width: '21%',
+        height: '13%',
         position: 'absolute',
-        top: '34.5%',
+        top: '40.5%',
         bottom: 0,
-        left: '16%',
+        left: '13%',
         right: 0,
 
     },
     button: {
-        backgroundColor: 'black',
+        backgroundColor: '#fff',
         color: 'black',
         width: '80%',
         height: '10%',
@@ -57,7 +62,8 @@ const styles = StyleSheet.create({
         left: '10%',
         right: 0,
 
-    }
+    },
+
 });
 
 
