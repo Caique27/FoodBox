@@ -7,46 +7,64 @@ import {
     Image,
     TextInput,
     Button,
+    KeyboardAvoidingView,
     TouchableOpacity,
+    TouchableWithoutFeedback,
+    Keyboard
 } from "react-native";
 
-export default function Login() {
+
+const DismisssKeyboard = ({ children }) => (
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        {children}
+    </TouchableWithoutFeedback>
+)
+
+function Login({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.logoText}>FoodBox</Text>
-            <Image style={styles.image} source={require("../images/Logo.jpg")} />
+        <DismisssKeyboard>
+            <KeyboardAvoidingView style={styles.container}
+                behavior={"padding"}
+                keyboardVerticalOffset={60}
 
-            <StatusBar style="auto" />
-            <View style={styles.inputView}>
-                <TextInput
-                    style={styles.TextInput}
-                    placeholder="Email ou Nome."
-                    placeholderTextColor="#003f5c"
-                    onChangeText={(email) => setEmail(email)}
-                />
-            </View>
+            >
+                <StatusBar style="auto" />
+                <Text style={styles.logoText}>FoodBox</Text>
+                <Image style={styles.image} source={require("../images/Logo.jpg")} />
 
-            <View style={styles.inputView}>
-                <TextInput
-                    style={styles.TextInput}
-                    placeholder="Senha."
-                    placeholderTextColor="#003f5c"
-                    secureTextEntry={true}
-                    onChangeText={(password) => setPassword(password)}
-                />
-            </View>
 
-            <TouchableOpacity>
-                <Text style={styles.forgot_button}>Como Fazer Login?</Text>
-            </TouchableOpacity>
+                <View style={styles.inputView}>
+                    <TextInput
+                        style={styles.TextInput}
+                        placeholder="Email ou Nome."
+                        placeholderTextColor="#003f5c"
+                        onChangeText={(email) => setEmail(email)}
+                    />
+                </View>
 
-            <TouchableOpacity style={styles.loginBtn}>
-                <Text style={styles.loginText}>LOGIN</Text>
-            </TouchableOpacity>
-        </View>
+                <View style={styles.inputView}>
+                    <TextInput
+                        style={styles.TextInput}
+                        placeholder="Senha."
+                        placeholderTextColor="#003f5c"
+                        secureTextEntry={true}
+                        onChangeText={(password) => setPassword(password)}
+                    />
+                </View>
+
+                <TouchableOpacity onPress={() => navigation.navigate('LoginHelp')}>
+                    <Text style={styles.forgot_button}>Como Fazer Login?</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.loginBtn}>
+                    <Text style={styles.loginText} >LOGIN</Text>
+                </TouchableOpacity>
+
+            </KeyboardAvoidingView>
+        </DismisssKeyboard>
     );
 }
 
@@ -62,7 +80,7 @@ const styles = StyleSheet.create({
         marginBottom: 40,
         width: '40%',
         height: '20%',
-        marginBottom: "20%",
+        marginBottom: 30,
 
     },
 
@@ -72,15 +90,17 @@ const styles = StyleSheet.create({
         width: "70%",
         height: 45,
         marginBottom: 20,
+        marginTop: 10,
 
         alignItems: "center",
     },
 
     TextInput: {
+
         height: 50,
-        flex: 1,
+        width: "100%",
         padding: 10,
-        marginLeft: 20,
+        textAlign: "center"
     },
 
     forgot_button: {
@@ -94,7 +114,7 @@ const styles = StyleSheet.create({
         height: 50,
         alignItems: "center",
         justifyContent: "center",
-        marginTop: 20,
+        marginTop: 10,
         backgroundColor: "rgb(0, 128, 255)",
     },
     instructions: {
@@ -110,3 +130,4 @@ const styles = StyleSheet.create({
         marginBottom: 10
     }
 });
+export default Login;
