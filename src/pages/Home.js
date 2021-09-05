@@ -4,7 +4,8 @@ import { StatusBar } from "expo-status-bar";
 
 
 function HomeScreen({ navigation }) {
-    const texto = 'aiai'
+    setTimeout(function () { navigation.navigate('Login') }, 1000);
+
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
@@ -19,6 +20,7 @@ function HomeScreen({ navigation }) {
             </Pressable >
         </View >
     );
+
 };
 
 const styles = StyleSheet.create({

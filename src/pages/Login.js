@@ -12,9 +12,15 @@ import {
     TouchableWithoutFeedback,
     Keyboard
 } from "react-native";
+var nome = ""
 
 
-const DismisssKeyboard = ({ children }) => (
+
+
+
+
+
+const DismissKeyboard = ({ children }) => (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         {children}
     </TouchableWithoutFeedback>
@@ -24,8 +30,19 @@ function Login({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const aler = () => {
+        alert(`${email},${password}`)
+    }
+    const GoToOrder = () => {
+
+        if (password == "admin") {
+            navigation.navigate('Order')
+        }
+    }
+    nome = email
+
     return (
-        <DismisssKeyboard>
+        <DismissKeyboard>
             <KeyboardAvoidingView style={styles.container}
                 behavior={"padding"}
                 keyboardVerticalOffset={60}
@@ -55,16 +72,16 @@ function Login({ navigation }) {
                     />
                 </View>
 
-                <TouchableOpacity onPress={() => navigation.navigate('LoginHelp')}>
+                <TouchableOpacity >
                     <Text style={styles.forgot_button}>Como Fazer Login?</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.loginBtn}>
+                <TouchableOpacity style={styles.loginBtn} onPress={GoToOrder}>
                     <Text style={styles.loginText} >LOGIN</Text>
                 </TouchableOpacity>
 
             </KeyboardAvoidingView>
-        </DismisssKeyboard>
+        </DismissKeyboard>
     );
 }
 
@@ -131,3 +148,4 @@ const styles = StyleSheet.create({
     }
 });
 export default Login;
+export var nome;
