@@ -1,17 +1,36 @@
-import React from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import { StatusBar } from "expo-status-bar";
 import { nome } from "./Login.js"
-var name = nome
-name = name.charAt(0).toUpperCase() + name.slice(1);//Capitalizes the firs letter
+import greeting from "../data/time.js"
+userName = nome
+userName = userName.charAt(0).toUpperCase() + userName.slice(1);//Capitalizes the firs letter
+
 
 function Order({ navigation }) {
+
+
+    const [name, setName] = useState(userName)
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
-            <Text >
-                Boa noite, {name}
-            </Text>
+            <View id='header'>
+                <Text>
+                    {greeting()}
+                </Text>
+                <Text id='name'>
+                    Caique
+                </Text>
+            </View>
+            <View id='order'>
+            </View>
+            <View id='footer'>
+                <TouchableOpacity style={styles.orderBtn} >
+                    <Text  >
+                        Fazer pedido
+                    </Text>
+                </TouchableOpacity>
+            </View>
         </View >
     );
 };
@@ -22,6 +41,16 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+
+    },
+    orderBtn: {
+        width: 360,
+        borderRadius: 25,
+        height: 50,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 10,
+        backgroundColor: "rgb(0, 128, 255)",
 
     },
 });

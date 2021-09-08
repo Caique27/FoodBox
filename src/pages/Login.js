@@ -30,26 +30,24 @@ function Login({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const aler = () => {
-        alert(`${email},${password}`)
-    }
     const GoToOrder = () => {
 
         if (password == "admin") {
             navigation.navigate('Order')
+        } else {
+            alert("Wrong Password.")
         }
     }
-    nome = email
 
+    nome = email
     return (
         <DismissKeyboard>
             <KeyboardAvoidingView style={styles.container}
                 behavior={"padding"}
-                keyboardVerticalOffset={60}
-
-            >
+                keyboardVerticalOffset={60}>
                 <StatusBar style="auto" />
-                <Text style={styles.logoText}>FoodBox</Text>
+                <Text style={styles.logoText}>FoodBox
+                </Text>
                 <Image style={styles.image} source={require("../images/Logo.jpg")} />
 
 
@@ -73,16 +71,19 @@ function Login({ navigation }) {
                 </View>
 
                 <TouchableOpacity >
-                    <Text style={styles.forgot_button}>Como Fazer Login?</Text>
+                    <Text style={styles.forgot_button}>Como Fazer Login?
+                    </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.loginBtn} onPress={GoToOrder}>
-                    <Text style={styles.loginText} >LOGIN</Text>
+                    <Text style={styles.loginText} >LOGIN
+                    </Text>
                 </TouchableOpacity>
 
             </KeyboardAvoidingView>
         </DismissKeyboard>
     );
+
 }
 
 const styles = StyleSheet.create({
