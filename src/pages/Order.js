@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, Button, TouchableOpacity, Image } from 'react-native';
 import { StatusBar } from "expo-status-bar";
 import { nome } from "./Login.js"
+import HelpBtn from "./components/HelpButton.js"
+import OrderBtn from "./components/OrderButton"
 import greeting from "../data/time.js"
 userName = nome
 userName = userName.charAt(0).toUpperCase() + userName.slice(1);//Capitalizes the firs letter
@@ -11,25 +13,41 @@ function Order({ navigation }) {
 
 
     const [name, setName] = useState(userName)
+    const [button, setButton] = useState(false)
+    //  setButton(true)
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
-            <View id='header'>
-                <Text>
-                    {greeting()}
-                </Text>
-                <Text id='name'>
-                    Caique
-                </Text>
+            <View id='header' style={styles.header}>
+                <Image style={styles.image} source={require("../images/Logo.jpg")} />
+
+                <View style={styles.message}>
+                    <View>
+                        <Text style={styles.greeting}>
+                            {greeting()}
+                        </Text>
+                    </View>
+
+
+                    <View id='name' style={styles.name} >
+                        <Text style={{
+                            fontWeight: "500",
+                            fontSize: 25,
+                        }}>
+                            Caique
+                        </Text>
+                    </View>
+                </View>
+
+
+                <HelpBtn />
             </View>
-            <View id='order'>
+            <View id='order' style={styles.order}>
+                <Button title="Press me" onPress={() => { setButton(button ? false : true) }}></Button>
+
             </View>
             <View id='footer'>
-                <TouchableOpacity style={styles.orderBtn} >
-                    <Text  >
-                        Fazer pedido
-                    </Text>
-                </TouchableOpacity>
+                <OrderBtn text="Fazer pedido" status={button} />
             </View>
         </View >
     );
@@ -43,16 +61,57 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
 
     },
+    header: {
+
+        marginTop: "10%",
+        position: "absolute",
+        left: "2%",
+        top: "2%",
+        borderBottomWidth: 1,
+        borderBottomColor: "rgb(191, 191, 191)",
+        flexDirection: "row",
+        paddingBottom: "3%",
+
+
+
+
+    },
+    order: {
+
+        height: '70%',
+        width: '90%',
+        marginTop: "30%"
+    },
+
     orderBtn: {
-        width: 360,
-        borderRadius: 25,
-        height: 50,
+        width: 370,
+        borderRadius: 15,
+        height: 60,
         alignItems: "center",
         justifyContent: "center",
-        marginTop: 10,
+        marginTop: 13,
         backgroundColor: "rgb(0, 128, 255)",
 
     },
+
+    image: {
+        width: 70,
+        height: 70,
+
+    },
+
+    greeting: {
+        fontSize: 18,
+        fontWeight: "300",
+
+    },
+    message: {
+        marginLeft: "1%",
+        marginTop: "3%"
+    },
+    name: {
+
+    }
 });
 
 
