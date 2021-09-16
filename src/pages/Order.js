@@ -6,10 +6,11 @@ import { nome } from "./Login.js"
 import HelpBtn from "./components/HelpButton.js"
 import OrderBtn from "./components/OrderButton"
 import greeting from "../data/time.js"
-import Caique from "./components/PanelCaique"
-import Joao from "./components/PanelJoao"
+import People from "./components/panels/PanelPeople"
+import Joao from "./components/panels/PanelJoao"
 userName = nome
 userName = userName.charAt(0).toUpperCase() + userName.slice(1);//Capitalizes the firs letter
+
 
 
 function Order({ navigation }) {
@@ -26,7 +27,7 @@ function Order({ navigation }) {
         openPanel()
     }
 
-    const [defaultPanel, setDefaultPanel] = useState(Caique)
+    const [defaultPanel, setDefaultPanel] = useState(People)
 
     const [panelProps, setPanelProps] = useState({
         fullWidth: true,
@@ -77,7 +78,7 @@ function Order({ navigation }) {
             <View id='order' style={styles.order}>
                 <Button title="Press me" onPress={() => { setButton(button ? false : true) }}></Button>
 
-                <Button title="Painel Caique" onPress={() => Panel(Caique)}></Button>
+                <Button title="Painel Pessoas" onPress={() => Panel(People)}></Button>
                 <Button title="Painel João" onPress={() => Panel(Joao)}></Button>
 
 
@@ -88,7 +89,7 @@ function Order({ navigation }) {
             <SwipeablePanel {...panelProps} isActive={isPanelActive}>
 
                 {defaultPanel}
-
+                <OrderBtn text="Fazer pedido" status={button} />
             </SwipeablePanel>
 
         </View >

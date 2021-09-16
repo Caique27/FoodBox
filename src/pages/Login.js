@@ -32,11 +32,12 @@ function Login({ navigation }) {
 
     const GoToOrder = () => {
 
-        if (password == "admin") {
-            navigation.navigate('Order')
-        } else {
-            alert("Wrong Password.")
-        }
+        /*    if (password == "admin") {
+                navigation.navigate('Order')
+            } else {
+                alert("Wrong Password.")
+            } */
+        navigation.navigate('Order')
     }
 
     nome = email
