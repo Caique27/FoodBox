@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, Button, TouchableOpacity, Image } from 'react-native';
 import { StatusBar } from "expo-status-bar";
-import { SwipeablePanel } from 'rn-swipeable-panel';
+import { SwipeablePanel } from 'rn-swipeable-panel'
 import { nome } from "./Login.js"
+import Slider from '@react-native-community/slider';
 import HelpBtn from "./components/HelpButton.js"
 import OrderBtn from "./components/OrderButton"
 import greeting from "../data/time.js"
 import People from "./components/panels/PanelPeople"
-import Joao from "./components/panels/PanelJoao"
+import Price from "./components/panels/PanelPrice"
 userName = nome
 userName = userName.charAt(0).toUpperCase() + userName.slice(1);//Capitalizes the firs letter
 
@@ -18,6 +19,7 @@ function Order({ navigation }) {
 
     const [name, setName] = useState(userName)
     const [button, setButton] = useState(false)
+    const [people, setPeople] = useState(5);
 
     //  -------------------Panel Configs------------------
     const Panel = (content) => {
@@ -48,6 +50,8 @@ function Order({ navigation }) {
         setIsPanelActive(false);
     };
     //  -------------------End of Panel Configs------------------
+    const [sliderValue, setSliderValue] = useState(15);
+
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
@@ -79,7 +83,8 @@ function Order({ navigation }) {
                 <Button title="Press me" onPress={() => { setButton(button ? false : true) }}></Button>
 
                 <Button title="Painel Pessoas" onPress={() => Panel(People)}></Button>
-                <Button title="Painel João" onPress={() => Panel(Joao)}></Button>
+                <Button title="Painel Preço" onPress={() => Panel(Price)}></Button>
+
 
 
             </View>
@@ -87,9 +92,8 @@ function Order({ navigation }) {
                 <OrderBtn text="Fazer pedido" status={button} />
             </View>
             <SwipeablePanel {...panelProps} isActive={isPanelActive}>
-
                 {defaultPanel}
-                <OrderBtn text="Fazer pedido" status={button} />
+
             </SwipeablePanel>
 
         </View >
