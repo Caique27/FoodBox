@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import Slider from '@react-native-community/slider';
-var Valor = ""
 
 const Price = (props) => {
-    const [sliderValue, setSliderValue] = useState(Valor);
 
+    // function Update(value) {
+    //    props.handleClick
+    // }
+    const Update = (value) => {
 
-
-    function set(valor) {
-        Valor = valor
-        setSliderValue(valor)
+        props.action(value)
     }
 
     return (
         <View >
-            <Text>O valor é : {sliderValue}</Text>
+            <Text>
+                {props.text}
+            </Text>
             <Slider
 
                 maximumValue={100}
@@ -23,9 +24,13 @@ const Price = (props) => {
                 minimumTrackTintColor="#307ecc"
                 maximumTrackTintColor="#000000"
                 step={1}
-                value={sliderValue}
-                onValueChange={(input) => set(input)
+                value={props.Valor}
+                onValueChange={
+                    (sliderValue) => Update(sliderValue)
+
+
                 }
+
 
             />
         </View>

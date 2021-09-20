@@ -4,6 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import { SwipeablePanel } from 'rn-swipeable-panel'
 import { nome } from "./Login.js"
 import Slider from '@react-native-community/slider';
+import OptionBtn from "./components/options/OptionBtn"
 import HelpBtn from "./components/HelpButton.js"
 import OrderBtn from "./components/OrderButton"
 import greeting from "../data/time.js"
@@ -20,11 +21,17 @@ function Order({ navigation }) {
     const [name, setName] = useState(userName)
     const [button, setButton] = useState(false)
     const [people, setPeople] = useState(5);
+    const [price, setPrice] = useState(20)
 
     //  -------------------Panel Configs------------------
     const Panel = (content) => {
+        if (content == Price) {
+            setDefaultPanel(<Price text=" texto do Preço" action={(valor) => setPrice(valor)} Valor={sliderValue}></Price>)
+        }
+        else if (content == People) {
+            setDefaultPanel(<People text="Pessoas" ></People>)
+        }
 
-        setDefaultPanel(content)
 
         openPanel()
     }
@@ -84,6 +91,19 @@ function Order({ navigation }) {
 
                 <Button title="Painel Pessoas" onPress={() => Panel(People)}></Button>
                 <Button title="Painel Preço" onPress={() => Panel(Price)}></Button>
+                <View id='options' style={styles.options}>
+                    <OptionBtn handleClick={() => Panel(Price)} />
+                    <OptionBtn />
+                    <OptionBtn />
+                    <OptionBtn />
+                    <OptionBtn />
+                    <OptionBtn />
+
+                </View>
+
+                <Text>
+                    {price}
+                </Text>
 
 
 
@@ -156,7 +176,11 @@ const styles = StyleSheet.create({
         marginLeft: "1%",
         marginTop: "3%"
     },
-    name: {
+    options: {
+        flexDirection: "row",
+        flexWrap: "wrap",
+        marginTop: 15
+
 
     }
 });

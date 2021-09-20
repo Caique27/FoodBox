@@ -4,10 +4,12 @@ import Slider from '@react-native-community/slider';
 
 
 
-function People() {
+const People = (props) => {
 
     return (
-        <View style={styles.container} >
+        <View  >
+
+
 
 
 
@@ -23,15 +25,5 @@ function People() {
 };
 
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-
-    },
-
-})
 
 export default People;
