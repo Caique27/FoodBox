@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import Slider from '@react-native-community/slider';
+var shownValue;
 
 const Price = (props) => {
 
@@ -10,6 +11,7 @@ const Price = (props) => {
     const Update = (value) => {
 
         props.action(value)
+        shownValue = value
     }
 
     return (
@@ -23,8 +25,8 @@ const Price = (props) => {
                 minimumValue={0}
                 minimumTrackTintColor="#307ecc"
                 maximumTrackTintColor="#000000"
-                step={1}
-                value={props.Valor}
+                step={10}
+                value={shownValue}
                 onValueChange={
                     (sliderValue) => Update(sliderValue)
 

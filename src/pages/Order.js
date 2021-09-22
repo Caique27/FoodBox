@@ -1,15 +1,18 @@
+// React Native Imports
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, Button, TouchableOpacity, Image } from 'react-native';
 import { StatusBar } from "expo-status-bar";
 import { SwipeablePanel } from 'rn-swipeable-panel'
 import { nome } from "./Login.js"
-import Slider from '@react-native-community/slider';
+// Components Imports
 import OptionBtn from "./components/options/OptionBtn"
 import HelpBtn from "./components/HelpButton.js"
 import OrderBtn from "./components/OrderButton"
 import greeting from "../data/time.js"
 import People from "./components/panels/PanelPeople"
 import Price from "./components/panels/PanelPrice"
+// Images Import
+
 userName = nome
 userName = userName.charAt(0).toUpperCase() + userName.slice(1);//Capitalizes the firs letter
 
@@ -26,7 +29,7 @@ function Order({ navigation }) {
     //  -------------------Panel Configs------------------
     const Panel = (content) => {
         if (content == Price) {
-            setDefaultPanel(<Price text=" texto do Preço" action={(valor) => setPrice(valor)} Valor={sliderValue}></Price>)
+            setDefaultPanel(<Price text=" texto do Preço" action={(valor) => setPrice(valor)} ></Price>)
         }
         else if (content == People) {
             setDefaultPanel(<People text="Pessoas" ></People>)
@@ -87,13 +90,96 @@ function Order({ navigation }) {
                 <HelpBtn />
             </View>
             <View id='order' style={styles.order}>
-                <Button title="Press me" onPress={() => { setButton(button ? false : true) }}></Button>
 
-                <Button title="Painel Pessoas" onPress={() => Panel(People)}></Button>
-                <Button title="Painel Preço" onPress={() => Panel(Price)}></Button>
+
+                <View id="info" style={styles.info}>
+                    <View id="price" style={{ flexDirection: "row", }} >
+
+                        <Image
+                            style={{ width: 35, height: 35, marginTop: 2 }}
+                            source={require('../images/icons/priceIcon.png')}
+                        />
+                        <View style={{ flexDirection: "column" }}>
+                            <Text style={{
+                                fontWeight: "600",
+                                fontSize: 30,
+
+                            }}>
+                                {price}
+                            </Text>
+                            <Text style={{
+                                fontWeight: "400",
+                                fontSize: 15,
+
+                            }}>
+                                Preço
+                            </Text>
+
+                        </View>
+
+                    </View>
+                    <View id="people" style={{ flexDirection: "row", marginLeft: 20 }} >
+
+                        <Image
+                            style={styles.icons}
+                            source={require('../images/icons/peopleIcon.png')}
+                        />
+                        <View style={{ flexDirection: "column" }}>
+                            <Text style={{
+                                fontWeight: "600",
+                                fontSize: 30,
+                                marginLeft: 10
+
+                            }}>
+                                {people}
+                            </Text>
+                            <Text style={{
+                                fontWeight: "400",
+                                fontSize: 15,
+
+                            }}>
+                                Pessoas
+                            </Text>
+
+                        </View>
+
+                    </View>
+
+                    <View id="time" style={{ flexDirection: "row" }} >
+
+                        <Image
+                            style={styles.icons}
+                            source={require('../images/icons/timeIcon.png')}
+                        />
+                        <View style={{ flexDirection: "column" }}>
+                            <View style={{ flexDirection: "row", marginLeft: 6, }}>
+                                <Text style={{
+                                    fontWeight: "600",
+                                    fontSize: 30,
+
+                                }}>
+                                    50
+                                </Text>
+                                <Text style={{ fontSize: 15, marginTop: 15 }}>
+                                    min
+                                </Text>
+                            </View>
+
+                            <Text style={{
+                                fontWeight: "400",
+                                fontSize: 15,
+
+                            }}>
+                                Tempo
+                            </Text>
+
+                        </View>
+
+                    </View>
+                </View>
                 <View id='options' style={styles.options}>
                     <OptionBtn handleClick={() => Panel(Price)} />
-                    <OptionBtn />
+                    <OptionBtn handleClick={() => Panel(People)} />
                     <OptionBtn />
                     <OptionBtn />
                     <OptionBtn />
@@ -101,9 +187,7 @@ function Order({ navigation }) {
 
                 </View>
 
-                <Text>
-                    {price}
-                </Text>
+
 
 
 
@@ -179,8 +263,21 @@ const styles = StyleSheet.create({
     options: {
         flexDirection: "row",
         flexWrap: "wrap",
-        marginTop: 15
+        marginTop: 35
 
+
+    },
+    info: {
+        flexDirection: "row",
+        justifyContent: "space-around",
+
+        marginTop: 40
+
+
+    },
+    icons: {
+        width: 40,
+        height: 40
 
     }
 });
