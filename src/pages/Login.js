@@ -12,7 +12,7 @@ import {
     TouchableWithoutFeedback,
     Keyboard
 } from "react-native";
-var nome = ""
+
 
 
 
@@ -27,7 +27,7 @@ const DismissKeyboard = ({ children }) => (
 )
 
 function Login({ navigation }) {
-    const [email, setEmail] = useState("");
+    const [name, setName] = useState("user");
     const [password, setPassword] = useState("");
 
     const GoToOrder = () => {
@@ -40,7 +40,7 @@ function Login({ navigation }) {
         navigation.navigate('Order')
     }
 
-    nome = email
+
     return (
         <DismissKeyboard>
             <KeyboardAvoidingView style={styles.container}
@@ -57,7 +57,7 @@ function Login({ navigation }) {
                         style={styles.TextInput}
                         placeholder="Email ou Nome."
                         placeholderTextColor="#003f5c"
-                        onChangeText={(email) => setEmail(email)}
+                    // onChangeText={(email) => setName(email)}
                     />
                 </View>
 
@@ -150,4 +150,3 @@ const styles = StyleSheet.create({
     }
 });
 export default Login;
-export var nome;

@@ -13,23 +13,23 @@ import People from "./components/panels/PanelPeople"
 import Price from "./components/panels/PanelPrice"
 // Images Import
 
-userName = nome
-userName = userName.charAt(0).toUpperCase() + userName.slice(1);//Capitalizes the firs letter
+//userName = nome
+//userName = userName.charAt(0).toUpperCase() + userName.slice(1);//Capitalizes the firs letter
 
 
 
-function Order({ navigation }) {
+function Order(props, { navigation }) {
 
 
-    const [name, setName] = useState(userName)
-    const [button, setButton] = useState(false)
+    const [name, setName] = useState(props.userName)
+    const [button, setButton] = useState(true)
     const [people, setPeople] = useState(5);
     const [price, setPrice] = useState(20)
 
     //  -------------------Panel Configs------------------
     const Panel = (content) => {
         if (content == Price) {
-            setDefaultPanel(<Price text=" texto do Preço" action={(valor) => setPrice(valor)} ></Price>)
+            setDefaultPanel(<Price status={button} action={(valor) => setPrice(valor)} price={price}></Price>)
         }
         else if (content == People) {
             setDefaultPanel(<People text="Pessoas" ></People>)
@@ -177,6 +177,9 @@ function Order({ navigation }) {
 
                     </View>
                 </View>
+                <Text style={styles.instructions}>
+                    Escolha os detalhes do pedido
+                </Text>
                 <View id='options' style={styles.options}>
                     <OptionBtn handleClick={() => Panel(Price)} />
                     <OptionBtn handleClick={() => Panel(People)} />
@@ -270,15 +273,23 @@ const styles = StyleSheet.create({
     info: {
         flexDirection: "row",
         justifyContent: "space-around",
-
-        marginTop: 40
+        paddingBottom: 10,
+        marginTop: 30,
+        borderBottomWidth: 1,
+        borderBottomColor: "rgb(191, 191, 191)",
 
 
     },
     icons: {
-        width: 40,
-        height: 40
+        width: 35,
+        height: 35
 
+    },
+    instructions: {
+        fontSize: 15,
+        fontWeight: "500",
+        marginLeft: "18%",
+        marginTop: 15
     }
 });
 
