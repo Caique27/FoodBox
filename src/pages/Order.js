@@ -5,7 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import { SwipeablePanel } from 'rn-swipeable-panel'
 import { nome } from "./Login.js"
 // Components Imports
-import OptionBtn from "./components/options/OptionBtn"
+import OptionBtn from "./components/OptionBtn"
 import HelpBtn from "./components/HelpButton.js"
 import OrderBtn from "./components/OrderButton"
 import greeting from "../data/time.js"
@@ -29,17 +29,17 @@ function Order(props, { navigation }) {
     //  -------------------Panel Configs------------------
     const Panel = (content) => {
         if (content == Price) {
-            setDefaultPanel(<Price status={button} action={(valor) => setPrice(valor)} price={price}></Price>)
+            setDefaultPanel(<Price status={button} action={(valor) => setPrice(valor)} ></Price>)
         }
         else if (content == People) {
-            setDefaultPanel(<People text="Pessoas" ></People>)
+            setDefaultPanel(<People status={button} action={(valor) => setPeople(valor)} ></People>)
         }
 
 
         openPanel()
     }
 
-    const [defaultPanel, setDefaultPanel] = useState(People)
+    const [defaultPanel, setDefaultPanel] = useState()
 
     const [panelProps, setPanelProps] = useState({
         fullWidth: true,
@@ -60,7 +60,7 @@ function Order(props, { navigation }) {
         setIsPanelActive(false);
     };
     //  -------------------End of Panel Configs------------------
-    const [sliderValue, setSliderValue] = useState(15);
+
 
     return (
         <View style={styles.container}>
