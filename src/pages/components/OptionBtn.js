@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Image, TouchableOpacity } from 'react-native';
-
+var icon = "./icons/paymentOpt.png"
 
 
 const buttonDiameter = 80
@@ -8,10 +8,11 @@ const buttonDiameter = 80
 
 function Option(props) {
 
-    var locationOpt = props.icon
+
+
     return (
         <TouchableOpacity style={styles.button} onPress={props.handleClick}>
-            <Image style={styles.image} source={require("./icons/locationOpt.png")} />
+            <Image style={styles.image} source={require(icon)} />
         </TouchableOpacity>
     );
 };
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         backgroundColor: "#1A97D0",
         alignItems: 'center',
-        margin: 15,
+        margin: 12,
         marginBottom: 20
 
 

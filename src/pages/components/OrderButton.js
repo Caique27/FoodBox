@@ -21,7 +21,7 @@ export default function OrderButton(props, { navigation }) {
 const styles = StyleSheet.create({
 
     ready: {
-        width: 370,
+        width: 400,
         borderRadius: 15,
         height: 60,
         alignItems: "center",
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     },
 
     unready: {
-        width: 370,
+        width: 400,
         borderRadius: 15,
         height: 60,
         alignItems: "center",

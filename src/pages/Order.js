@@ -11,6 +11,7 @@ import OrderBtn from "./components/OrderButton"
 import greeting from "../data/time.js"
 import People from "./components/panels/PanelPeople"
 import Price from "./components/panels/PanelPrice"
+import Unlike from "./components/panels/PanelUnlike"
 // Images Import
 
 //userName = nome
@@ -29,10 +30,16 @@ function Order(props, { navigation }) {
     //  -------------------Panel Configs------------------
     const Panel = (content) => {
         if (content == Price) {
+            setPanelProps(smallProps)
             setDefaultPanel(<Price status={button} action={(valor) => setPrice(valor)} ></Price>)
         }
         else if (content == People) {
+            setPanelProps(smallProps)
             setDefaultPanel(<People status={button} action={(valor) => setPeople(valor)} ></People>)
+        } else if (content == Unlike) {
+            setPanelProps(bigProps)
+            setDefaultPanel(<Unlike status={button}  ></Unlike>)
+
         }
 
 
@@ -41,18 +48,35 @@ function Order(props, { navigation }) {
 
     const [defaultPanel, setDefaultPanel] = useState()
 
-    const [panelProps, setPanelProps] = useState({
+
+    const [panelProps, setPanelProps] = useState(smallProps);
+
+    const bigProps = {
         fullWidth: true,
-        onlySmall: true,
+        onlySmall: false,
+        onlyLarge: true,
+        openLarge: true,
         closeOnTouchOutside: true,
         showCloseButton: true,
         onClose: () => closePanel(),
         onPressCloseButton: () => closePanel(),
 
-    });
+    }
+    const smallProps = {
+        fullWidth: true,
+        onlySmall: true,
+        onlyLarge: false,
+        openLarge: false,
+        closeOnTouchOutside: true,
+        showCloseButton: true,
+        onClose: () => closePanel(),
+        onPressCloseButton: () => closePanel(),
+
+    }
     const [isPanelActive, setIsPanelActive] = useState(false);
 
     function openPanel() {
+
         setIsPanelActive(true);
     };
 
@@ -181,12 +205,12 @@ function Order(props, { navigation }) {
                     Escolha os detalhes do pedido
                 </Text>
                 <View id='options' style={styles.options}>
-                    <OptionBtn handleClick={() => Panel(Price)} />
-                    <OptionBtn handleClick={() => Panel(People)} />
-                    <OptionBtn />
-                    <OptionBtn />
-                    <OptionBtn />
-                    <OptionBtn />
+                    <OptionBtn handleClick={() => Panel(Price)} icon={"location"} />
+                    <OptionBtn handleClick={() => Panel(People)} icon={"location"} />
+                    <OptionBtn handleClick={() => Panel(Unlike)} icon={"location"} />
+                    <OptionBtn icon={"location"} />
+                    <OptionBtn icon={"location"} />
+                    <OptionBtn icon={"payment"} />
 
                 </View>
 
@@ -219,7 +243,7 @@ const styles = StyleSheet.create({
 
         marginTop: "10%",
         position: "absolute",
-        left: "2%",
+        left: 21,
         top: "2%",
         borderBottomWidth: 1,
         borderBottomColor: "rgb(191, 191, 191)",
@@ -266,7 +290,9 @@ const styles = StyleSheet.create({
     options: {
         flexDirection: "row",
         flexWrap: "wrap",
-        marginTop: 35
+        marginTop: 35,
+        justifyContent: "space-evenly"
+
 
 
     },

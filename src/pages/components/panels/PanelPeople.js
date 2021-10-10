@@ -49,7 +49,7 @@ const People = (props) => {
             <View id="button" style={{
                 position: "absolute", bottom: -110
             }}>
-                <OrderBtn text="Fazer pedido" />
+                <OrderBtn text="Fazer pedido" status={props.status} />
             </View>
 
         </View>

@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         borderColor: "rgb(128, 191, 255)",
         borderWidth: 2,
-        marginLeft: "38%",
+        marginLeft: "39%",
         marginRight: "4%",
         marginTop: "5%"
 
