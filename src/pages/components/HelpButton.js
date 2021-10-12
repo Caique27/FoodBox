@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
-
+import { Text, View, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+const windowWidth = Dimensions.get('window').width;
 
 
 function help({ navigation }) {
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         borderColor: "rgb(128, 191, 255)",
         borderWidth: 2,
-        marginLeft: "39%",
+        marginLeft: windowWidth * 0.35,
         marginRight: "4%",
         marginTop: "5%"
 

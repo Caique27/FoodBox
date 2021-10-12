@@ -206,12 +206,12 @@ function Order(props, { navigation }) {
                     Escolha os detalhes do pedido
                 </Text>
                 <View id='options' style={styles.options}>
-                    <OptionBtn handleClick={() => Panel(Price)} />
-                    <OptionBtn handleClick={() => Panel(People)} />
-                    <OptionBtn handleClick={() => Panel(Unlike)} />
-                    <OptionBtn />
-                    <OptionBtn />
-                    <OptionBtn />
+                    <OptionBtn handleClick={() => Panel(Price)} icon={require("./components/icons/priceOpt.png")} />
+                    <OptionBtn handleClick={() => Panel(People)} icon={require("./components/icons/peopleOpt.png")} />
+                    <OptionBtn handleClick={() => Panel(Unlike)} icon={require("./components/icons/unlikeOpt.png")} />
+                    <OptionBtn icon={require("./components/icons/paymentOpt.png")} />
+                    <OptionBtn icon={require("./components/icons/locationOpt.png")} />
+                    <OptionBtn icon={require("./components/icons/priceOpt.png")} />
 
                 </View>
 
@@ -220,7 +220,7 @@ function Order(props, { navigation }) {
 
 
             </View>
-            <View id='footer'>
+            <View id='footer' >
                 <OrderBtn text="Fazer pedido" status={button} />
             </View>
             <SwipeablePanel {...panelProps} isActive={isPanelActive}>
@@ -241,10 +241,10 @@ const styles = StyleSheet.create({
 
     },
     header: {
-
+        width: '90%',
         marginTop: "10%",
         position: "absolute",
-        left: 21,
+        //   left: 21,
         top: "2%",
         borderBottomWidth: 1,
         borderBottomColor: "rgb(191, 191, 191)",
@@ -259,7 +259,8 @@ const styles = StyleSheet.create({
 
         height: '70%',
         width: '90%',
-        marginTop: "30%"
+        marginTop: "30%",
+
     },
 
     orderBtn: {
@@ -291,7 +292,7 @@ const styles = StyleSheet.create({
     options: {
         flexDirection: "row",
         flexWrap: "wrap",
-        marginTop: 35,
+        marginTop: '15%',
         justifyContent: "space-evenly"
 
 

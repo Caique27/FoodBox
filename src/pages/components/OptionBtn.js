@@ -1,19 +1,19 @@
 import React from 'react';
-import { StyleSheet, Image, TouchableOpacity } from 'react-native';
-var icons = ["../components/icons/locationOpt.png", "../components/icons/priceOpt.png"]
+import { StyleSheet, Image, TouchableOpacity, Dimensions } from 'react-native';
+const windowWidth = Dimensions.get('window').width;
 
 
 
 const buttonDiameter = 80
 
 
-function Option(props) {
+const Option = (props) => {
 
 
 
     return (
         <TouchableOpacity style={styles.button} onPress={props.handleClick}>
-            <Image style={styles.image} source={require("../components/icons/unlikeOpt.png")} />
+            <Image style={styles.image} source={props.icon} />
         </TouchableOpacity>
     );
 };
@@ -21,12 +21,12 @@ function Option(props) {
 
 const styles = StyleSheet.create({
     button: {
-        width: buttonDiameter,
-        height: buttonDiameter,
+        width: windowWidth * 0.23,
+        height: 80,
         borderRadius: 100,
         backgroundColor: "#1A97D0",
         alignItems: 'center',
-        margin: 12,
+        margin: windowWidth * 0.031,
         marginBottom: 20,
         shadowColor: "gray",
         shadowOffset: {
@@ -43,9 +43,9 @@ const styles = StyleSheet.create({
 
     },
     image: {
-        width: 60,
-        height: 60,
-        marginTop: 8
+        width: 50,
+        height: 50,
+        marginTop: 12
     }
 
 })

@@ -1,29 +1,24 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-
+import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
 import OrderBtn from "../OrderButton.js"
-
+const windowHeight = Dimensions.get('window').height;
 
 
 const Unlike = (props) => {
 
 
   return (
-    <View>
+    <View style={{ flexDirection: "column", justifyContent: "space-evenly" }}>
 
 
-      <Text>
-        Vai corinthians
-      </Text>
-      <View id="list">
+
+      <View id="list" style={{ backgroundColor: "yellow", height: windowHeight * 0.7, }}>
 
       </View>
 
-      <View id="button" style={{
-        position: "absolute", bottom: "-3450%"
-      }}>
-        <OrderBtn text="Fazer pedido" status={props.status} />
-      </View>
+
+
+
 
 
     </View>

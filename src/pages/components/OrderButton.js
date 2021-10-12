@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, Button, TouchableOpacity, Image } from 'react-native';
-
+import { Text, View, StyleSheet, Button, TouchableOpacity, Image, Dimensions } from 'react-native';
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 var ready = true
 
 export default function OrderButton(props, { navigation }) {
 
     ready = props.status
+
     return (
 
         <TouchableOpacity style={ready ? styles.ready : styles.unready} backgroundColor={"black"}>
@@ -21,9 +23,9 @@ export default function OrderButton(props, { navigation }) {
 const styles = StyleSheet.create({
 
     ready: {
-        width: 400,
+        width: windowWidth - 13,
         borderRadius: 15,
-        height: 60,
+        height: windowHeight * 0.09,
         alignItems: "center",
         justifyContent: "center",
         marginTop: 13,
@@ -33,9 +35,9 @@ const styles = StyleSheet.create({
     },
 
     unready: {
-        width: 400,
+        width: windowWidth - 13,
         borderRadius: 15,
-        height: 60,
+        height: windowHeight * 0.09,
         alignItems: "center",
         justifyContent: "center",
         marginTop: 13,
