@@ -1,6 +1,6 @@
 // React Native Imports
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, Button, TouchableOpacity, Image } from 'react-native';
+import { Text, View, StyleSheet, Button, TouchableOpacity, Image, Dimensions } from 'react-native';
 import { StatusBar } from "expo-status-bar";
 import { SwipeablePanel } from 'rn-swipeable-panel'
 import { nome } from "./Login.js"
@@ -15,7 +15,8 @@ import Unlike from "./components/panels/PanelUnlike"
 // Images Import
 
 //userName = nome
-//userName = userName.charAt(0).toUpperCase() + userName.slice(1);//Capitalizes the firs letter
+//userName = userName.charAt(0).toUpperCase() + userName.slice(1);//Capitalizes the firs lettee
+
 
 
 
