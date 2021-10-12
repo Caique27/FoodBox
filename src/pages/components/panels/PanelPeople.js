@@ -11,10 +11,7 @@ const People = (props) => {
 
         props.action(value)
         setShownValue(value)
-
-
     }
-
 
     return (
         <View style={{ alignItems: "center" }} >
@@ -33,7 +30,7 @@ const People = (props) => {
             <Slider
                 style={{ width: 300, }}
                 maximumValue={10}
-                minimumValue={0}
+                minimumValue={1}
                 minimumTrackTintColor="#2CA3FF"
                 maximumTrackTintColor="#cccccc"
                 step={1}
@@ -47,7 +44,7 @@ const People = (props) => {
 
             />
             <View id="button" style={{
-                position: "absolute", bottom: -110
+                position: "absolute", bottom: -105
             }}>
                 <OrderBtn text="Fazer pedido" status={props.status} />
             </View>

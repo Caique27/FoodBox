@@ -28,7 +28,7 @@ const Price = (props) => {
             <Slider
                 style={{ width: 300, }}
                 maximumValue={100}
-                minimumValue={0}
+                minimumValue={20}
                 minimumTrackTintColor="#2CA3FF"
                 maximumTrackTintColor="#cccccc"
                 step={10}
@@ -42,7 +42,7 @@ const Price = (props) => {
 
             />
             <View id="button" style={{
-                position: "absolute", bottom: -110
+                position: "absolute", bottom: -105
             }}>
                 <OrderBtn text="Fazer pedido" status={props.status} />
             </View>

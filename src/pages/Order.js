@@ -205,12 +205,12 @@ function Order(props, { navigation }) {
                     Escolha os detalhes do pedido
                 </Text>
                 <View id='options' style={styles.options}>
-                    <OptionBtn handleClick={() => Panel(Price)} icon={"location"} />
-                    <OptionBtn handleClick={() => Panel(People)} icon={"location"} />
-                    <OptionBtn handleClick={() => Panel(Unlike)} icon={"location"} />
-                    <OptionBtn icon={"location"} />
-                    <OptionBtn icon={"location"} />
-                    <OptionBtn icon={"payment"} />
+                    <OptionBtn handleClick={() => Panel(Price)} />
+                    <OptionBtn handleClick={() => Panel(People)} />
+                    <OptionBtn handleClick={() => Panel(Unlike)} />
+                    <OptionBtn />
+                    <OptionBtn />
+                    <OptionBtn />
 
                 </View>
 
